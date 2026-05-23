@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Synth X</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -192,6 +192,7 @@ main{
   grid-template-columns:1fr 1fr;
   align-items:center;
   gap:60px;
+  min-height:0;
 }
 
 .left{
@@ -247,13 +248,8 @@ main{
     transparent 100%);
 }
 
-.x-light:before{
-  transform:rotate(45deg);
-}
-
-.x-light:after{
-  transform:rotate(-45deg);
-}
+.x-light:before{transform:rotate(45deg)}
+.x-light:after{transform:rotate(-45deg)}
 
 .x-light .core{
   position:absolute;
@@ -370,16 +366,249 @@ footer{
   text-transform:uppercase;
 }
 
-@media(max-width:900px){
-  html,body{overflow:auto}
-  .page{height:auto;min-height:100svh}
+/* Mobile: same concept, one vertical screen, no horizontal slide, no scroll */
+@media(max-width:700px){
+  html,body{
+    overflow:hidden;
+  }
+
+  #stars{
+    opacity:.38;
+  }
+
+  .page{
+    height:100svh;
+    padding:14px;
+    grid-template-rows:44px 1fr 18px;
+  }
+
+  .frame{
+    inset:8px;
+    border-radius:18px;
+  }
+
+  .topline{
+    left:8px;
+    right:8px;
+    top:56px;
+    opacity:.7;
+  }
+
+  header{
+    height:44px;
+  }
+
+  .logo{
+    gap:9px;
+  }
+
+  .logo-mark{
+    width:26px;
+    height:26px;
+    font-size:9px;
+  }
+
+  .logo-stack{
+    gap:3px;
+  }
+
+  .logo-word{
+    gap:8px;
+  }
+
+  .letters{
+    gap:6px;
+    font-size:8px;
+    letter-spacing:.36em;
+  }
+
+  .mini-x{
+    width:14px;
+    height:14px;
+  }
+
+  .mini-x:before,
+  .mini-x:after{
+    left:6px;
+    top:-2px;
+    width:1px;
+    height:18px;
+  }
+
+  .mini-core{
+    left:5px;
+    top:5px;
+    width:4px;
+    height:4px;
+  }
+
+  .logo-sub{
+    font-size:6px;
+    letter-spacing:.12em;
+  }
+
+  .nav{
+    gap:0;
+    font-size:0;
+  }
+
+  .nav a:not(.access){
+    display:none;
+  }
+
+  .access{
+    font-size:7px;
+    letter-spacing:.18em;
+    padding:8px 10px;
+  }
+
   main{
     grid-template-columns:1fr;
-    gap:40px;
-    padding:40px 0;
+    grid-template-rows:38% 62%;
+    gap:0;
+    align-items:stretch;
   }
+
+  .left{
+    padding-left:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+
+  .kicker{
+    font-size:7px;
+    letter-spacing:.18em;
+    margin-bottom:16px;
+  }
+
+  .synth-logo{
+    gap:24px;
+  }
+
+  .synth-letters{
+    gap:15px;
+    font-size:22px;
+    letter-spacing:.25em;
+  }
+
+  .x-light{
+    width:70px;
+    height:70px;
+  }
+
+  .x-light:before,
+  .x-light:after{
+    left:34px;
+    top:-7px;
+    width:1.5px;
+    height:84px;
+  }
+
+  .x-light .core{
+    left:31px;
+    top:31px;
+    width:8px;
+    height:8px;
+  }
+
+  .line{
+    width:110px;
+    margin-top:14px;
+  }
+
+  .statement{
+    margin-top:16px;
+    font-size:8.5px;
+    line-height:1.75;
+    max-width:300px;
+  }
+
+  .statement br{
+    display:none;
+  }
+
+  .micro{
+    margin-top:10px;
+    font-size:6.5px;
+    line-height:1.5;
+    letter-spacing:.16em;
+  }
+
   .right{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows:repeat(3,1fr);
+    gap:8px;
+    min-height:0;
+    align-self:stretch;
+  }
+
+  .card{
+    height:auto;
+    min-height:0;
+    border-radius:18px;
+    padding:11px;
+  }
+
+  .num{
+    font-size:7px;
+  }
+
+  .jp{
+    font-size:10.5px;
+    letter-spacing:.02em;
+    line-height:1.2;
+  }
+
+  .en{
+    margin-top:3px;
+    font-size:5.8px;
+    letter-spacing:.12em;
+  }
+
+  footer{
+    font-size:5.8px;
+    letter-spacing:.12em;
+  }
+
+  footer div:last-child{
+    display:none;
+  }
+}
+
+@media(max-width:380px){
+  .synth-letters{
+    gap:12px;
+    font-size:20px;
+  }
+
+  .x-light{
+    width:62px;
+    height:62px;
+  }
+
+  .x-light:before,
+  .x-light:after{
+    left:30px;
+    top:-6px;
+    height:74px;
+  }
+
+  .x-light .core{
+    left:27px;
+    top:27px;
+  }
+
+  .statement{
+    font-size:8px;
+  }
+
+  .jp{
+    font-size:9.5px;
+  }
+
+  .card{
+    padding:10px;
   }
 }
 </style>
@@ -535,11 +764,14 @@ function resize(){
   w = canvas.width = window.innerWidth;
   h = canvas.height = window.innerHeight;
 
-  stars = Array.from({length:120}, () => ({
+  const isMobile = window.innerWidth <= 700;
+  const count = isMobile ? 65 : 120;
+
+  stars = Array.from({length:count}, () => ({
     x: Math.random()*w,
     y: Math.random()*h,
-    r: Math.random()*1.5,
-    s: Math.random()*0.15 + 0.02
+    r: Math.random()*(isMobile ? 1.05 : 1.5),
+    s: Math.random()*(isMobile ? 0.08 : 0.15) + 0.02
   }));
 }
 
@@ -548,7 +780,7 @@ function draw(){
 
   stars.forEach(star=>{
     ctx.beginPath();
-    ctx.fillStyle='rgba(255,255,255,.55)';
+    ctx.fillStyle='rgba(255,255,255,.52)';
     ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
     ctx.fill();
 
