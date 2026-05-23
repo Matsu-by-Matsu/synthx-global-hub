@@ -7,44 +7,47 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Serif+JP:ital,wght@1,200;1,300;1,400&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --bg:#040404;
-  --text:#f2f2ee;
-  --muted:#7a7d82;
-  --line:rgba(255,255,255,.08);
-  --gold:#b89a63;
+  --text:#f4f4f0;
+  --muted:#7b8188;
+  --line:rgba(255,255,255,.07);
+  --gold:#b79a63;
   --blue:#1f8cff;
 }
-
 *{box-sizing:border-box}
-
 html,body{
   margin:0;
   width:100%;
   height:100%;
   overflow:hidden;
 }
-
 body{
-  background:
-    radial-gradient(circle at 70% 30%, rgba(255,255,255,.045), transparent 24%),
-    radial-gradient(circle at 20% 0%, rgba(184,154,99,.08), transparent 24%),
-    #040404;
+  background:#040404;
   color:var(--text);
   font-family:Inter,sans-serif;
   -webkit-font-smoothing:antialiased;
 }
 
+#stars{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  opacity:.55;
+}
+
 .page{
+  position:relative;
+  z-index:2;
   width:100%;
   height:100svh;
   padding:28px;
   display:grid;
   grid-template-rows:auto 1fr auto;
-  position:relative;
 }
 
 .frame{
@@ -85,12 +88,11 @@ header{
   width:34px;
   height:34px;
   border-radius:50%;
-  border:1px solid rgba(184,154,99,.45);
+  border:1px solid rgba(183,154,99,.45);
   display:grid;
   place-items:center;
   color:var(--gold);
   font-size:12px;
-  letter-spacing:.08em;
 }
 
 .logo-stack{
@@ -102,47 +104,64 @@ header{
 .logo-word{
   display:flex;
   align-items:center;
-  gap:13px;
+  gap:14px;
 }
 
-.logo-word .letters{
+.letters{
   display:flex;
   align-items:center;
   gap:11px;
   font-size:11px;
   letter-spacing:.48em;
   font-weight:500;
-  color:#fff;
 }
 
-.logo-word .mini-x{
-  width:16px;
-  height:16px;
+.mini-x{
+  width:20px;
+  height:20px;
   position:relative;
-  filter:drop-shadow(0 0 8px rgba(31,140,255,.75));
+  filter:
+    drop-shadow(0 0 6px rgba(31,140,255,1))
+    drop-shadow(0 0 18px rgba(31,140,255,.95));
 }
 
-.logo-word .mini-x:before,
-.logo-word .mini-x:after{
+.mini-x:before,
+.mini-x:after{
   content:"";
   position:absolute;
-  left:7px;
-  top:-1px;
+  left:9px;
+  top:-3px;
   width:1.5px;
-  height:18px;
-  background:linear-gradient(to bottom, transparent, #fff 39%, #3aa0ff 50%, #fff 61%, transparent);
-  box-shadow:
-    0 0 10px rgba(31,140,255,.95),
-    0 0 18px rgba(31,140,255,.72);
+  height:26px;
+  background:
+    linear-gradient(to bottom,
+    transparent,
+    rgba(255,255,255,.8) 32%,
+    #fff 50%,
+    rgba(255,255,255,.8) 68%,
+    transparent);
 }
 
-.logo-word .mini-x:before{transform:rotate(45deg)}
-.logo-word .mini-x:after{transform:rotate(-45deg)}
+.mini-x:before{transform:rotate(45deg)}
+.mini-x:after{transform:rotate(-45deg)}
+
+.mini-core{
+  position:absolute;
+  left:7px;
+  top:7px;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:
+    0 0 10px #fff,
+    0 0 22px rgba(31,140,255,1);
+}
 
 .logo-sub{
   font-size:8px;
   letter-spacing:.18em;
-  color:#555b60;
+  color:#565b60;
   text-transform:uppercase;
 }
 
@@ -161,12 +180,8 @@ header{
   text-decoration:none;
 }
 
-.nav a:hover{
-  color:#fff;
-}
-
 .access{
-  border:1px solid rgba(184,154,99,.35);
+  border:1px solid rgba(183,154,99,.35);
   color:var(--gold);
   border-radius:999px;
   padding:10px 15px;
@@ -187,13 +202,13 @@ main{
   font-size:9px;
   letter-spacing:.3em;
   color:var(--gold);
-  margin-bottom:40px;
+  margin-bottom:42px;
 }
 
 .synth-logo{
   display:flex;
   align-items:center;
-  gap:42px;
+  gap:54px;
 }
 
 .synth-letters{
@@ -205,27 +220,31 @@ main{
 }
 
 .x-light{
-  width:86px;
-  height:86px;
+  width:120px;
+  height:120px;
   position:relative;
   filter:
-    drop-shadow(0 0 12px rgba(31,140,255,.95))
-    drop-shadow(0 0 34px rgba(31,140,255,.62));
+    drop-shadow(0 0 12px rgba(31,140,255,1))
+    drop-shadow(0 0 36px rgba(31,140,255,.9))
+    drop-shadow(0 0 80px rgba(31,140,255,.55));
+  animation:pulse 4s ease-in-out infinite;
 }
 
 .x-light:before,
 .x-light:after{
   content:"";
   position:absolute;
-  left:42px;
-  top:-2px;
+  left:59px;
+  top:-12px;
   width:2px;
-  height:92px;
-  background:linear-gradient(to bottom, transparent, #fff 39%, #3aa0ff 50%, #fff 61%, transparent);
-  box-shadow:
-    0 0 16px rgba(31,140,255,1),
-    0 0 34px rgba(31,140,255,.88),
-    0 0 58px rgba(31,140,255,.55);
+  height:144px;
+  background:
+    linear-gradient(to bottom,
+    transparent 0%,
+    rgba(255,255,255,.1) 18%,
+    rgba(255,255,255,.95) 50%,
+    rgba(255,255,255,.1) 82%,
+    transparent 100%);
 }
 
 .x-light:before{
@@ -238,31 +257,36 @@ main{
 
 .x-light .core{
   position:absolute;
-  left:38px;
-  top:38px;
-  width:10px;
-  height:10px;
+  left:54px;
+  top:54px;
+  width:12px;
+  height:12px;
   border-radius:50%;
   background:#fff;
   box-shadow:
-    0 0 10px #fff,
-    0 0 24px rgba(31,140,255,1),
-    0 0 52px rgba(31,140,255,.88);
+    0 0 12px #fff,
+    0 0 26px rgba(31,140,255,1),
+    0 0 54px rgba(31,140,255,.9);
 }
 
-.statement{
-  margin-top:42px;
-  color:#8d9094;
-  font-size:11px;
-  line-height:2.1;
-  max-width:400px;
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.03)}
 }
 
 .line{
   width:180px;
   height:1px;
   background:linear-gradient(90deg,var(--gold),transparent);
-  margin-top:28px;
+  margin-top:34px;
+}
+
+.statement{
+  margin-top:38px;
+  color:#8d9094;
+  font-size:11px;
+  line-height:2.1;
+  max-width:420px;
 }
 
 .micro{
@@ -292,6 +316,7 @@ main{
   position:relative;
   overflow:hidden;
   transition:.2s ease;
+  backdrop-filter:blur(4px);
 }
 
 .card:hover{
@@ -304,7 +329,7 @@ main{
   position:absolute;
   inset:-40%;
   background:
-    radial-gradient(circle,rgba(255,255,255,.045),transparent 55%);
+    radial-gradient(circle,rgba(31,140,255,.08),transparent 55%);
   opacity:0;
   transition:.25s ease;
 }
@@ -322,15 +347,15 @@ main{
 .jp{
   font-family:"Noto Serif JP",serif;
   font-style:italic;
-  font-size:14px;
+  font-size:13px;
   font-weight:300;
   letter-spacing:.04em;
 }
 
 .en{
-  margin-top:6px;
+  margin-top:4px;
   font-size:8px;
-  letter-spacing:.22em;
+  letter-spacing:.18em;
   text-transform:uppercase;
   color:#61656a;
 }
@@ -362,6 +387,8 @@ footer{
 
 <body>
 
+<canvas id="stars"></canvas>
+
 <div class="page">
 
 <div class="frame"></div>
@@ -370,22 +397,32 @@ footer{
 <header>
 
 <div class="logo">
-  <div class="logo-mark">SX</div>
-  <div class="logo-stack">
-    <div class="logo-word">
-      <div class="letters">SYNTH</div>
-      <div class="mini-x"></div>
-    </div>
-    <div class="logo-sub">Curated Asset Hub</div>
-  </div>
+
+<div class="logo-mark">SX</div>
+
+<div class="logo-stack">
+
+<div class="logo-word">
+<div class="letters">SYNTH</div>
+
+<div class="mini-x">
+<div class="mini-core"></div>
+</div>
+
+</div>
+
+<div class="logo-sub">Curated Asset Hub</div>
+
+</div>
+
 </div>
 
 <nav class="nav">
-  <a href="#">Real Estate</a>
-  <a href="#">Cars</a>
-  <a href="#">Art</a>
-  <a href="#">Jewelry</a>
-  <a class="access" href="#">Request Access</a>
+<a href="#">Real Estate</a>
+<a href="#">Cars</a>
+<a href="#">Art</a>
+<a href="#">Jewelry</a>
+<a class="access" href="#">Request Access</a>
 </nav>
 
 </header>
@@ -399,14 +436,19 @@ TOKYO · HONG KONG · SINGAPORE · GLOBAL
 </div>
 
 <div class="synth-logo">
-  <div class="synth-letters">
-    <span>S</span>
-    <span>Y</span>
-    <span>N</span>
-    <span>T</span>
-    <span>H</span>
-  </div>
-  <div class="x-light"><span class="core"></span></div>
+
+<div class="synth-letters">
+<span>S</span>
+<span>Y</span>
+<span>N</span>
+<span>T</span>
+<span>H</span>
+</div>
+
+<div class="x-light">
+<div class="core"></div>
+</div>
+
 </div>
 
 <div class="line"></div>
@@ -427,7 +469,7 @@ PRIVATE LAYER / GLOBAL DISTRIBUTION / ASSET DISCOVERY
 <div class="card">
 <div class="num">01</div>
 <div>
-<div class="jp">不動産</div>
+<div class="jp">不動産 / Real Estate</div>
 <div class="en">BUY / INVEST / RENT</div>
 </div>
 </div>
@@ -435,7 +477,7 @@ PRIVATE LAYER / GLOBAL DISTRIBUTION / ASSET DISCOVERY
 <div class="card">
 <div class="num">02</div>
 <div>
-<div class="jp">車</div>
+<div class="jp">車 / Cars</div>
 <div class="en">DRIVE / COLLECT</div>
 </div>
 </div>
@@ -443,7 +485,7 @@ PRIVATE LAYER / GLOBAL DISTRIBUTION / ASSET DISCOVERY
 <div class="card">
 <div class="num">03</div>
 <div>
-<div class="jp">アート</div>
+<div class="jp">アート / Art</div>
 <div class="en">COLLECT / PRIVATE</div>
 </div>
 </div>
@@ -451,7 +493,7 @@ PRIVATE LAYER / GLOBAL DISTRIBUTION / ASSET DISCOVERY
 <div class="card">
 <div class="num">04</div>
 <div>
-<div class="jp">ジュエリー</div>
+<div class="jp">ジュエリー / Jewelry</div>
 <div class="en">ACQUIRE / SOURCE</div>
 </div>
 </div>
@@ -459,7 +501,7 @@ PRIVATE LAYER / GLOBAL DISTRIBUTION / ASSET DISCOVERY
 <div class="card">
 <div class="num">05</div>
 <div>
-<div class="jp">ホテル</div>
+<div class="jp">ホテル / Hotels</div>
 <div class="en">STAY / EXPERIENCE</div>
 </div>
 </div>
@@ -467,7 +509,7 @@ PRIVATE LAYER / GLOBAL DISTRIBUTION / ASSET DISCOVERY
 <div class="card">
 <div class="num">06</div>
 <div>
-<div class="jp">会員権</div>
+<div class="jp">会員権 / Membership</div>
 <div class="en">ACCESS / NETWORK</div>
 </div>
 </div>
@@ -482,6 +524,50 @@ PRIVATE LAYER / GLOBAL DISTRIBUTION / ASSET DISCOVERY
 </footer>
 
 </div>
+
+<script>
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+
+let w,h,stars=[];
+
+function resize(){
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+
+  stars = Array.from({length:120}, () => ({
+    x: Math.random()*w,
+    y: Math.random()*h,
+    r: Math.random()*1.5,
+    s: Math.random()*0.15 + 0.02
+  }));
+}
+
+function draw(){
+  ctx.clearRect(0,0,w,h);
+
+  stars.forEach(star=>{
+    ctx.beginPath();
+    ctx.fillStyle='rgba(255,255,255,.55)';
+    ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
+    ctx.fill();
+
+    star.y += star.s;
+
+    if(star.y > h){
+      star.y = 0;
+      star.x = Math.random()*w;
+    }
+  });
+
+  requestAnimationFrame(draw);
+}
+
+resize();
+draw();
+
+window.addEventListener('resize',resize);
+</script>
 
 </body>
 </html>
