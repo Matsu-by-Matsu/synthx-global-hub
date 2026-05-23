@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Synth X</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Serif+JP:ital,wght@1,200;1,300;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#040404;
+  --text:#f2f2ee;
+  --muted:#7a7d82;
+  --line:rgba(255,255,255,.08);
+  --gold:#b89a63;
+  --blue:#1f8cff;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+body{
+  background:
+    radial-gradient(circle at 70% 30%, rgba(255,255,255,.045), transparent 24%),
+    radial-gradient(circle at 20% 0%, rgba(184,154,99,.08), transparent 24%),
+    #040404;
+  color:var(--text);
+  font-family:Inter,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+.page{
+  width:100%;
+  height:100svh;
+  padding:28px;
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  position:relative;
+}
+
+.frame{
+  position:absolute;
+  inset:18px;
+  border:1px solid rgba(255,255,255,.05);
+  border-radius:28px;
+  pointer-events:none;
+}
+
+.topline{
+  position:absolute;
+  left:18px;
+  right:18px;
+  top:86px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--line),transparent);
+}
+
+header,main,footer{
+  position:relative;
+  z-index:2;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.logo-mark{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:1px solid rgba(184,154,99,.45);
+  display:grid;
+  place-items:center;
+  color:var(--gold);
+  font-size:12px;
+  letter-spacing:.08em;
+}
+
+.logo-stack{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.logo-word{
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+
+.logo-word .letters{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  font-size:11px;
+  letter-spacing:.48em;
+  font-weight:500;
+  color:#fff;
+}
+
+.logo-word .mini-x{
+  width:16px;
+  height:16px;
+  position:relative;
+  filter:drop-shadow(0 0 8px rgba(31,140,255,.75));
+}
+
+.logo-word .mini-x:before,
+.logo-word .mini-x:after{
+  content:"";
+  position:absolute;
+  left:7px;
+  top:-1px;
+  width:1.5px;
+  height:18px;
+  background:linear-gradient(to bottom, transparent, #fff 39%, #3aa0ff 50%, #fff 61%, transparent);
+  box-shadow:
+    0 0 10px rgba(31,140,255,.95),
+    0 0 18px rgba(31,140,255,.72);
+}
+
+.logo-word .mini-x:before{transform:rotate(45deg)}
+.logo-word .mini-x:after{transform:rotate(-45deg)}
+
+.logo-sub{
+  font-size:8px;
+  letter-spacing:.18em;
+  color:#555b60;
+  text-transform:uppercase;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  font-size:9px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:#81858a;
+}
+
+.nav a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.nav a:hover{
+  color:#fff;
+}
+
+.access{
+  border:1px solid rgba(184,154,99,.35);
+  color:var(--gold);
+  border-radius:999px;
+  padding:10px 15px;
+}
+
+main{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:60px;
+}
+
+.left{
+  padding-left:16px;
+}
+
+.kicker{
+  font-size:9px;
+  letter-spacing:.3em;
+  color:var(--gold);
+  margin-bottom:40px;
+}
+
+.synth-logo{
+  display:flex;
+  align-items:center;
+  gap:42px;
+}
+
+.synth-letters{
+  display:flex;
+  gap:30px;
+  font-size:31px;
+  letter-spacing:.35em;
+  font-weight:300;
+}
+
+.x-light{
+  width:86px;
+  height:86px;
+  position:relative;
+  filter:
+    drop-shadow(0 0 12px rgba(31,140,255,.95))
+    drop-shadow(0 0 34px rgba(31,140,255,.62));
+}
+
+.x-light:before,
+.x-light:after{
+  content:"";
+  position:absolute;
+  left:42px;
+  top:-2px;
+  width:2px;
+  height:92px;
+  background:linear-gradient(to bottom, transparent, #fff 39%, #3aa0ff 50%, #fff 61%, transparent);
+  box-shadow:
+    0 0 16px rgba(31,140,255,1),
+    0 0 34px rgba(31,140,255,.88),
+    0 0 58px rgba(31,140,255,.55);
+}
+
+.x-light:before{
+  transform:rotate(45deg);
+}
+
+.x-light:after{
+  transform:rotate(-45deg);
+}
+
+.x-light .core{
+  position:absolute;
+  left:38px;
+  top:38px;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:
+    0 0 10px #fff,
+    0 0 24px rgba(31,140,255,1),
+    0 0 52px rgba(31,140,255,.88);
+}
+
+.statement{
+  margin-top:42px;
+  color:#8d9094;
+  font-size:11px;
+  line-height:2.1;
+  max-width:400px;
+}
+
+.line{
+  width:180px;
+  height:1px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  margin-top:28px;
+}
+
+.micro{
+  margin-top:22px;
+  font-size:9px;
+  letter-spacing:.22em;
+  color:#4f5458;
+  text-transform:uppercase;
+}
+
+.right{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.card{
+  height:138px;
+  border-radius:26px;
+  border:1px solid var(--line);
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  position:relative;
+  overflow:hidden;
+  transition:.2s ease;
+}
+
+.card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(255,255,255,.18);
+}
+
+.card:before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:
+    radial-gradient(circle,rgba(255,255,255,.045),transparent 55%);
+  opacity:0;
+  transition:.25s ease;
+}
+
+.card:hover:before{
+  opacity:1;
+}
+
+.num{
+  font-size:9px;
+  color:var(--gold);
+  letter-spacing:.2em;
+}
+
+.jp{
+  font-family:"Noto Serif JP",serif;
+  font-style:italic;
+  font-size:14px;
+  font-weight:300;
+  letter-spacing:.04em;
+}
+
+.en{
+  margin-top:6px;
+  font-size:8px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#61656a;
+}
+
+footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  font-size:8px;
+  letter-spacing:.22em;
+  color:#4f5458;
+  text-transform:uppercase;
+}
+
+@media(max-width:900px){
+  html,body{overflow:auto}
+  .page{height:auto;min-height:100svh}
+  main{
+    grid-template-columns:1fr;
+    gap:40px;
+    padding:40px 0;
+  }
+  .right{
+    grid-template-columns:1fr 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<div class="frame"></div>
+<div class="topline"></div>
+
+<header>
+
+<div class="logo">
+  <div class="logo-mark">SX</div>
+  <div class="logo-stack">
+    <div class="logo-word">
+      <div class="letters">SYNTH</div>
+      <div class="mini-x"></div>
+    </div>
+    <div class="logo-sub">Curated Asset Hub</div>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="#">Real Estate</a>
+  <a href="#">Cars</a>
+  <a href="#">Art</a>
+  <a href="#">Jewelry</a>
+  <a class="access" href="#">Request Access</a>
+</nav>
+
+</header>
+
+<main>
+
+<section class="left">
+
+<div class="kicker">
+TOKYO · HONG KONG · SINGAPORE · GLOBAL
+</div>
+
+<div class="synth-logo">
+  <div class="synth-letters">
+    <span>S</span>
+    <span>Y</span>
+    <span>N</span>
+    <span>T</span>
+    <span>H</span>
+  </div>
+  <div class="x-light"><span class="core"></span></div>
+</div>
+
+<div class="line"></div>
+
+<div class="statement">
+Curated access to Japanese real assets and luxury categories. Open to<br>
+the world. Selective by design.
+</div>
+
+<div class="micro">
+PRIVATE LAYER / GLOBAL DISTRIBUTION / ASSET DISCOVERY
+</div>
+
+</section>
+
+<section class="right">
+
+<div class="card">
+<div class="num">01</div>
+<div>
+<div class="jp">不動産</div>
+<div class="en">BUY / INVEST / RENT</div>
+</div>
+</div>
+
+<div class="card">
+<div class="num">02</div>
+<div>
+<div class="jp">車</div>
+<div class="en">DRIVE / COLLECT</div>
+</div>
+</div>
+
+<div class="card">
+<div class="num">03</div>
+<div>
+<div class="jp">アート</div>
+<div class="en">COLLECT / PRIVATE</div>
+</div>
+</div>
+
+<div class="card">
+<div class="num">04</div>
+<div>
+<div class="jp">ジュエリー</div>
+<div class="en">ACQUIRE / SOURCE</div>
+</div>
+</div>
+
+<div class="card">
+<div class="num">05</div>
+<div>
+<div class="jp">ホテル</div>
+<div class="en">STAY / EXPERIENCE</div>
+</div>
+</div>
+
+<div class="card">
+<div class="num">06</div>
+<div>
+<div class="jp">会員権</div>
+<div class="en">ACCESS / NETWORK</div>
+</div>
+</div>
+
+</section>
+
+</main>
+
+<footer>
+<div>© Synth X</div>
+<div>Global Curated Asset Hub</div>
+</footer>
+
+</div>
+
+</body>
+</html>
