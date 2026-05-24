@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Synth X | Real Estate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Serif+JP:ital,wght@1,200;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#040404;--text:#f4f4f0;--muted:#8b9096;--line:rgba(255,255,255,.08);--gold:#b79a63;--blue:#1f8cff}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{background:#040404;color:var(--text);font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased}
+#stars{position:fixed;inset:0;z-index:0;opacity:.45}
+.page{position:relative;z-index:2;width:100%;height:100svh;padding:28px;display:grid;grid-template-rows:auto 1fr auto}
+.frame{position:absolute;inset:18px;border:1px solid rgba(255,255,255,.05);border-radius:28px;pointer-events:none}
+header,main,footer{position:relative;z-index:2}
+header{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit}
+.logo-mark{width:34px;height:34px;border-radius:50%;border:1px solid rgba(183,154,99,.45);display:grid;place-items:center;color:var(--gold);font-size:12px}
+.logo-word{display:flex;align-items:center;gap:12px}
+.letters{display:flex;gap:10px;font-size:11px;letter-spacing:.48em;font-weight:500}
+.mini-x{width:18px;height:18px;position:relative;filter:drop-shadow(0 0 8px rgba(31,140,255,1))}
+.mini-x:before,.mini-x:after{content:"";position:absolute;left:8px;top:-3px;width:1.4px;height:24px;background:linear-gradient(to bottom,transparent,#fff 50%,transparent)}
+.mini-x:before{transform:rotate(45deg)}.mini-x:after{transform:rotate(-45deg)}
+.sub{font-size:8px;letter-spacing:.18em;color:#565b60;text-transform:uppercase;margin-top:5px}
+.nav{display:flex;gap:24px;align-items:center;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:#81858a}
+.nav a{color:inherit;text-decoration:none}
+.nav .active{color:var(--gold)}
+.access{border:1px solid rgba(183,154,99,.35);border-radius:999px;padding:10px 15px;color:var(--gold)}
+main{display:grid;grid-template-columns:0.34fr 0.66fr;gap:34px;align-items:center;min-height:0}
+.left{padding-left:14px}
+.kicker{font-size:9px;letter-spacing:.32em;color:var(--gold);text-transform:uppercase}
+.title{margin-top:36px;font-family:"Noto Serif JP",serif;font-style:italic;font-size:31px;font-weight:300;letter-spacing:.06em}
+.title span{display:block;margin-top:8px;font-family:Inter,sans-serif;font-style:normal;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#6b7178}
+.copy{margin-top:30px;color:#8d9094;font-size:11px;line-height:2.05;max-width:340px}
+.switch{display:flex;gap:10px;margin-top:32px}
+.switch a{text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:999px;padding:10px 15px;font-size:9px;letter-spacing:.18em;text-transform:uppercase}
+.switch .on{color:var(--gold);border-color:rgba(183,154,99,.4);background:rgba(183,154,99,.04)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.property{height:430px;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:rgba(255,255,255,.025);text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:.22s ease;position:relative}
+.property:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.18)}
+.photo{height:260px;background-size:cover;background-position:center;position:relative;filter:saturate(.82) contrast(1.04)}
+.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,4,4,.78),transparent 54%),linear-gradient(120deg,rgba(31,140,255,.08),transparent 40%)}
+.kind{position:absolute;z-index:2;top:14px;left:14px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.34);border-radius:999px;padding:7px 10px;font-size:8px;letter-spacing:.18em;color:#d8c7a0;text-transform:uppercase}
+.body{padding:20px;display:flex;flex-direction:column;gap:11px;flex:1}
+.name{font-family:"Noto Serif JP",serif;font-style:italic;font-size:17px;font-weight:300;letter-spacing:.03em;line-height:1.35}
+.area{font-size:9px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase}
+.desc{font-size:10px;color:#8b9096;line-height:1.8}
+.bottom{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;color:#6b7178;font-size:8px;letter-spacing:.18em;text-transform:uppercase}
+footer{display:flex;justify-content:space-between;align-items:end;font-size:8px;letter-spacing:.22em;color:#4f5458;text-transform:uppercase}
+@media(max-width:700px){
+html,body{overflow:hidden}.page{height:100svh;padding:14px;grid-template-rows:44px 1fr 18px}.frame{inset:8px;border-radius:18px}header{height:44px}.logo-mark{width:26px;height:26px;font-size:9px}.letters{font-size:8px;gap:6px;letter-spacing:.36em}.mini-x{width:14px;height:14px}.mini-x:before,.mini-x:after{left:6px;top:-2px;height:18px;width:1px}.sub{font-size:6px;margin-top:3px}.nav a:not(.access){display:none}.access{font-size:7px;letter-spacing:.16em;padding:8px 10px}main{grid-template-columns:1fr;grid-template-rows:30% 70%;gap:0;align-items:stretch}.left{padding-left:0;display:flex;flex-direction:column;justify-content:center}.kicker{font-size:6.5px;letter-spacing:.2em}.title{margin-top:12px;font-size:20px}.title span{font-size:7px;letter-spacing:.2em}.copy{margin-top:10px;font-size:7.8px;line-height:1.65;max-width:310px}.switch{margin-top:10px}.switch a{font-size:6.5px;padding:7px 10px}.grid{grid-template-columns:1fr;grid-template-rows:repeat(3,1fr);gap:8px;min-height:0}.property{height:auto;min-height:0;border-radius:18px;display:grid;grid-template-columns:42% 58%}.photo{height:auto;min-height:0}.kind{font-size:6px;padding:5px 7px;top:8px;left:8px}.body{padding:11px;gap:5px}.name{font-size:11px;line-height:1.25}.area{font-size:6.5px;letter-spacing:.12em}.desc{font-size:7.2px;line-height:1.45}.bottom{padding-top:6px;font-size:5.8px;letter-spacing:.12em}footer{font-size:5.8px;letter-spacing:.12em}footer div:last-child{display:none}}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="page"><div class="frame"></div>
+<header>
+<a class="logo" href="index.html"><div class="logo-mark">SX</div><div><div class="logo-word"><div class="letters">SYNTH</div><div class="mini-x"></div></div><div class="sub">Curated Asset Hub</div></div></a>
+<nav class="nav"><a class="active" href="#">Real Estate</a><a href="index.html">Hub</a><a class="access" href="#">Request Access</a></nav>
+</header>
+<main>
+<section class="left">
+<div class="kicker">Real Estate / Rent</div>
+<div class="title">不動産<span>Buy / Rent</span></div>
+<div class="copy">BuyはPrivate Dealsとして準備中。Rentは、都市の働く場所と住む場所を、写真主役で静かに見せる。</div>
+<div class="switch"><a href="#" class="on">Rent</a><a href="#">Buy Soon</a></div>
+</section>
+<section class="grid">
+<a class="property" href="https://www.e-miki.com/search/detail/021_51836.html" target="_blank" rel="noopener">
+<div class="photo" style="background-image:url('https://www.e-miki.com/assets/images/building/01_02/021_51836.jpg')"><div class="kind">Office</div></div>
+<div class="body"><div class="area">Minami-Shinjuku</div><div class="name">ゼニス南新宿</div><div class="desc">新宿と代々木を結ぶ、都市型の静かなワークプレイス。</div><div class="bottom"><span>Office</span><span>View →</span></div></div>
+</a>
+<a class="property" href="https://rf12.jp/building/3111/" target="_blank" rel="noopener">
+<div class="photo" style="background-image:url('https://rf12.jp/images/estate/3111/1/3111-1.jpg')"><div class="kind">Residence</div></div>
+<div class="body"><div class="area">Shinagawa</div><div class="name">ウエリスアーバン品川タワー</div><div class="desc">東京の玄関口に立つ、グローバル拠点型レジデンス。</div><div class="bottom"><span>Residence</span><span>View →</span></div></div>
+</a>
+<a class="property" href="https://frontier-residence-kinshikoen.jp/" target="_blank" rel="noopener">
+<div class="photo" style="background-image:url('https://frontier-residence-kinshikoen.jp/img/facility-main-img-06.webp')"><div class="kind">Residence</div></div>
+<div class="body"><div class="area">Kinshicho / Oshiage</div><div class="name">フロンティアレジデンス錦糸公園</div><div class="desc">スカイツリーを望む、生活機能と余白を備えた都市居住。</div><div class="bottom"><span>Residence</span><span>View →</span></div></div>
+</a>
+</section>
+</main>
+<footer><div>© Synth X</div><div>Real Estate / Curated Rent</div></footer>
+</div>
+<script>
+const canvas=document.getElementById('stars'),ctx=canvas.getContext('2d');let w,h,stars=[];
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;const m=innerWidth<=700;stars=Array.from({length:m?55:110},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*(m?1:1.5),s:Math.random()*(m?.07:.13)+.015}))}
+function draw(){ctx.clearRect(0,0,w,h);stars.forEach(star=>{ctx.beginPath();ctx.fillStyle='rgba(255,255,255,.48)';ctx.arc(star.x,star.y,star.r,0,Math.PI*2);ctx.fill();star.y+=star.s;if(star.y>h){star.y=0;star.x=Math.random()*w}});requestAnimationFrame(draw)}
+resize();draw();addEventListener('resize',resize);
+</script>
+</body>
+</html>
