@@ -1,0 +1,31 @@
+name: Update Global Market Pulse
+
+on:
+  schedule:
+    # JST 08:00 / 14:00 / 20:00
+    - cron: "0 23,5,11 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch RSS and update news.json
+        run: python scripts/fetch_news.py
+
+      - name: Commit updated news.json
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update global market pulse"
+          file_pattern: news.json
