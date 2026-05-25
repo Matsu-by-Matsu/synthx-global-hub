@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<title>Synth X | Cars</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Serif+JP:ital,wght@1,200;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#040404;--text:#f5f2ea;--muted:#8b9096;--line:rgba(255,255,255,.08);--gold:#b79a63;--blue:#1f8cff}
+*{box-sizing:border-box}
+html,body{margin:0;background:#040404;color:var(--text);font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased}
+body{min-height:100svh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.serif{font-family:"Noto Serif JP",serif;font-style:italic;font-weight:300}
+#stars{position:fixed;inset:0;z-index:0;opacity:.58}
+.space-haze{position:fixed;inset:-20%;z-index:1;pointer-events:none;background:radial-gradient(circle at 68% 22%, rgba(49,98,160,.13), transparent 26%),radial-gradient(circle at 24% 72%, rgba(183,154,99,.055), transparent 22%),radial-gradient(circle at 50% 50%, rgba(255,255,255,.025), transparent 42%);filter:blur(10px);opacity:.75}
+.shooting-star{position:fixed;z-index:1;width:120px;height:1px;background:linear-gradient(90deg, rgba(255,255,255,.85), rgba(31,140,255,.38), transparent);transform:rotate(-28deg);opacity:0;pointer-events:none;animation:shootingStar 9s linear infinite}
+.shooting-star.s1{top:18%;left:74%;animation-delay:1.2s}.shooting-star.s2{top:42%;left:88%;animation-delay:4.9s;animation-duration:11s}.shooting-star.s3{top:66%;left:64%;animation-delay:7.3s;animation-duration:13s}
+@keyframes shootingStar{0%,72%{opacity:0;transform:translate3d(0,0,0) rotate(-28deg)}76%{opacity:.95}84%{opacity:0;transform:translate3d(-520px,260px,0) rotate(-28deg)}100%{opacity:0}}
+.frame{position:fixed;inset:18px;border:1px solid rgba(255,255,255,.05);border-radius:28px;pointer-events:none;z-index:3}
+.page{position:relative;z-index:2;min-height:100svh;padding:28px}
+header{height:44px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:4}
+.logo{display:flex;align-items:center;gap:14px}.logo-mark{width:34px;height:34px;border-radius:50%;border:1px solid rgba(183,154,99,.45);display:grid;place-items:center;color:var(--gold);font-size:12px}.logo-word{display:flex;align-items:center;gap:12px}.letters{display:flex;gap:10px;font-size:11px;letter-spacing:.48em;font-weight:500}.mini-x{width:18px;height:18px;position:relative;filter:drop-shadow(0 0 8px rgba(31,140,255,1))}.mini-x:before,.mini-x:after{content:"";position:absolute;left:8px;top:-3px;width:1.4px;height:24px;background:linear-gradient(to bottom,transparent,#fff 50%,transparent)}.mini-x:before{transform:rotate(45deg)}.mini-x:after{transform:rotate(-45deg)}.sub{font-size:8px;letter-spacing:.18em;color:#565b60;text-transform:uppercase;margin-top:5px}
+.nav{display:flex;gap:24px;align-items:center;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:#81858a}.nav .active{color:var(--gold)}.access{border:1px solid rgba(183,154,99,.35);border-radius:999px;padding:10px 15px;color:var(--gold)}
+.market-pulse{position:absolute;left:28px;right:28px;top:86px;z-index:6;height:26px;border-top:1px solid rgba(255,255,255,.055);border-bottom:1px solid rgba(255,255,255,.04);overflow:hidden;display:flex;align-items:center;gap:18px;pointer-events:auto;background:linear-gradient(90deg,rgba(0,0,0,.18),rgba(255,255,255,.012),rgba(0,0,0,.18))}
+.market-pulse-label{flex:0 0 auto;color:var(--gold);font-size:7px;letter-spacing:.28em;text-transform:uppercase}.market-pulse-track{flex:1;overflow:hidden;white-space:nowrap}.market-pulse-inner{display:inline-block;white-space:nowrap;animation:pulseTicker 58s linear infinite;font-size:8px;letter-spacing:.08em;text-transform:none}.market-pulse-inner a,.market-pulse-inner span{color:#858b91;margin-right:34px}.market-pulse-inner a:hover{color:#f4f1e8}.market-pulse-dot{color:var(--gold);margin:0 12px}@keyframes pulseTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.hero{min-height:calc(100svh - 56px);display:grid;grid-template-columns:.82fr 1.18fr;gap:28px;align-items:end;padding:90px 16px 26px}
+.kicker{font-size:9px;letter-spacing:.3em;color:var(--gold);margin-bottom:18px;text-transform:uppercase}.title{font-size:54px;line-height:.95;letter-spacing:.02em;margin:0}.title small{display:block;color:#777064;font-size:32px;margin-top:4px}.lead{margin-top:28px;color:#b8bcc0;font-size:12px;line-height:2;max-width:530px}.micro{margin-top:20px;font-size:9px;letter-spacing:.2em;color:#5d6267;text-transform:uppercase}
+.panel{border:1px solid rgba(255,255,255,.08);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012));overflow:hidden;box-shadow:0 30px 100px rgba(0,0,0,.35)}
+.media-hero{height:54svh;min-height:420px;position:relative;overflow:hidden}.media-hero img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) brightness(.88)}.media-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.78))}
+.overlay{position:absolute;left:24px;right:24px;bottom:22px;z-index:2}.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.badge{font-size:8px;letter-spacing:.14em;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:7px 10px;color:#aeb3b8;background:rgba(0,0,0,.24)}
+.price{font-size:30px;letter-spacing:.05em;color:#f6f2e8}.price-label{font-size:8px;letter-spacing:.24em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}.card{border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012));padding:18px;min-height:120px;display:flex;flex-direction:column;justify-content:space-between;transition:.2s ease}.card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.2)}.card-num{font-size:8px;color:var(--gold);letter-spacing:.22em}.card-title{font-family:"Noto Serif JP",serif;font-style:italic;font-size:18px}.card-meta{font-size:8px;letter-spacing:.14em;color:#666b70;text-transform:uppercase;margin-top:5px}
+.detail{padding:92px 16px 32px}.detail-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:18px;align-items:start}.big-photo{height:calc(100svh - 190px);min-height:520px;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#080808}.big-photo img{width:100%;height:100%;object-fit:cover;display:block;cursor:pointer}.info{display:grid;gap:14px}.specs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.spec{border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:13px;background:rgba(255,255,255,.018)}.spec b{display:block;font-size:13px;color:#f4f1e8}.spec span{display:block;font-size:8px;color:#676c71;letter-spacing:.16em;text-transform:uppercase;margin-top:6px}.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.gallery img{height:78px;width:100%;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.08);cursor:pointer;filter:brightness(.85)}.copy{font-size:11px;line-height:2;color:#aeb3b8}.cta-row{display:flex;gap:10px;flex-wrap:wrap}.btn{border:1px solid rgba(183,154,99,.45);border-radius:999px;padding:11px 15px;color:var(--gold);font-size:9px;letter-spacing:.18em;text-transform:uppercase}.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;display:none;align-items:center;justify-content:center;padding:24px}.lightbox.open{display:flex}.lightbox img{max-width:96vw;max-height:92svh;object-fit:contain;border-radius:18px}.close{position:fixed;right:28px;top:24px;color:#fff;font-size:12px;letter-spacing:.18em}
+footer{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:end;font-size:8px;letter-spacing:.22em;color:#4f5458;text-transform:uppercase;padding:0 16px 4px}
+@media(max-width:900px){body{overflow:auto}.page{padding:14px}.frame{inset:8px;border-radius:18px}.nav a:not(.access){display:none}.market-pulse{left:14px;right:14px;top:62px;height:22px}.market-pulse-label{font-size:5.8px;letter-spacing:.16em}.market-pulse-inner{font-size:6px}.hero{grid-template-columns:1fr;min-height:auto;padding:76px 0 22px}.title{font-size:36px}.title small{font-size:21px}.lead{font-size:10px}.media-hero{height:42svh;min-height:280px}.card-grid{grid-template-columns:1fr}.detail{padding:76px 0 22px}.detail-grid{grid-template-columns:1fr}.big-photo{height:46svh;min-height:320px}.specs{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="space-haze"></div><div class="shooting-star s1"></div><div class="shooting-star s2"></div><div class="shooting-star s3"></div>
+<div class="frame"></div>
+<div class="page">
+<header>
+<a class="logo" href="index.html">
+  <div class="logo-mark">SX</div>
+  <div><div class="logo-word"><div class="letters">SYNTH</div><div class="mini-x"></div></div><div class="sub">Curated Asset Hub</div></div>
+</a>
+<nav class="nav">
+  <a href="real-estate.html">Real Estate</a>
+  <a class="active" href="cars.html">Cars</a>
+  <a href="index.html">Hub</a>
+  <a class="access" href="#">Request Access</a>
+</nav>
+</header>
+<div class="market-pulse"><div class="market-pulse-label">GLOBAL MARKET PULSE</div><div class="market-pulse-track"><div class="market-pulse-inner" id="marketPulse"><span>Loading market pulse...</span></div></div></div>
+<main class="hero">
+  <section>
+    <div class="kicker">PRIVATE GARAGE / TOKYO</div>
+    <h1 class="title serif">Cars<small>curated driving assets</small></h1>
+    <div class="lead">保有者のストーリー、状態、希少装備、写真の説得力で見せるプライベート・ガレージ。最初の掲載車両はRange Rover Velar P380。</div>
+    <div class="micro">Drive / Collect / Private Sale</div>
+    <div class="card-grid">
+      <a class="card" href="car-velar.html">
+        <div class="card-num">01</div>
+        <div><div class="card-title">Range Rover Velar</div><div class="card-meta">P380 / R-Dynamic SE / AWD</div></div>
+      </a>
+    </div>
+  </section>
+  <a class="panel" href="car-velar.html">
+    <div class="media-hero">
+      <img src="assets/velar-09.jpg" alt="Range Rover Velar">
+      <div class="overlay">
+        <div class="price-label">ASKING PRICE</div>
+        <div class="price">¥12,000,000</div>
+        <div class="badges">
+          <span class="badge">2017 / H29</span><span class="badge">12,000km</span><span class="badge">P380 V6 S/C</span><span class="badge">Coris Grey</span>
+        </div>
+      </div>
+    </div>
+  </a>
+</main>
+<footer><div>© Synth X</div><div>Global Curated Asset Hub</div></footer>
+</div>
+<script>
+const canvas=document.getElementById('stars'),ctx=canvas.getContext('2d');let w,h,stars=[];
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;const m=innerWidth<=700;stars=Array.from({length:m?55:120},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*(m?1:1.45),s:Math.random()*(m?.06:.12)+.015}))}
+function draw(){ctx.clearRect(0,0,w,h);stars.forEach(star=>{ctx.beginPath();ctx.fillStyle='rgba(255,255,255,.46)';ctx.arc(star.x,star.y,star.r,0,Math.PI*2);ctx.fill();star.y+=star.s;if(star.y>h){star.y=0;star.x=Math.random()*w}});requestAnimationFrame(draw)}
+resize();draw();addEventListener('resize',resize);
+async function loadMarketPulse(){const el=document.getElementById('marketPulse');if(!el)return;try{const res=await fetch('news.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw new Error('news.json not found');const data=await res.json();const items=(data.items||[]).slice(0,12);if(!items.length)throw new Error('empty news');const html=items.map(item=>{const title=String(item.title||'').replace(/[<>]/g,'');const source=String(item.source||item.category||'Market').replace(/[<>]/g,'');const url=item.url||'';if(!url||url==='#'){return `<span>${source}: ${title}</span><span class="market-pulse-dot">•</span>`}return `<a href="${url}" target="_blank" rel="noopener">${source}: ${title}</a><span class="market-pulse-dot">•</span>`}).join('');el.innerHTML=html+html}catch(e){const fallback='日本不動産 / ラグジュアリー資産 / 金利 / 為替 / グローバル資本フロー';el.innerHTML=`<span>${fallback}</span><span class="market-pulse-dot">•</span><span>${fallback}</span>`}}
+loadMarketPulse();
+function openLight(src){const lb=document.getElementById('lightbox');const im=document.getElementById('lightbox-img');if(lb&&im){im.src=src;lb.classList.add('open')}}
+function closeLight(){const lb=document.getElementById('lightbox');if(lb)lb.classList.remove('open')}
+</script>
+</body></html>
