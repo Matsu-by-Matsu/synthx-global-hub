@@ -1,1 +1,0 @@
-# synthx-global-hub
