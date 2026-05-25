@@ -1,0 +1,23 @@
+{
+  "updated_at": "manual-seed",
+  "items": [
+    {
+      "title": "日本不動産・ホテル・富裕層消費・金利為替を自動監視中",
+      "source": "Synth X",
+      "url": "",
+      "published": ""
+    },
+    {
+      "title": "Google News RSS経由で日本語ニュース見出しを定期取得",
+      "source": "Market Pulse",
+      "url": "",
+      "published": ""
+    },
+    {
+      "title": "ロイター等は検索結果に含まれる場合のみ表示。公式API連携は別途契約領域",
+      "source": "Global Desk",
+      "url": "",
+      "published": ""
+    }
+  ]
+}
