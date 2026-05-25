@@ -1,22 +1,40 @@
 {
-  "updated_at": "manual-seed",
+  "updated_at": "manual-real-news-seed",
   "items": [
     {
-      "title": "日本不動産・ホテル・富裕層消費・金利為替を自動監視中",
-      "source": "Synth X",
-      "url": "",
+      "title": "2026年に向けて日本不動産投資市場は堅調、2025年第3四半期は過去最高水準",
+      "source": "JLL",
+      "url": "https://www.jll.com/ja-jp/insights/review-of-and-outlook-for-the-japan-real-estate-investment-market",
       "published": ""
     },
     {
-      "title": "Google News RSS経由で日本語ニュース見出しを定期取得",
-      "source": "Market Pulse",
-      "url": "",
+      "title": "2024年の日本ホテル投資額は1兆円突破、2008年の調査開始以来初",
+      "source": "JLL",
+      "url": "https://www.jll.com/ja-jp/insights/japan-hotel-investment-market-2025",
       "published": ""
     },
     {
-      "title": "ロイター等は検索結果に含まれる場合のみ表示。公式API連携は別途契約領域",
-      "source": "Global Desk",
-      "url": "",
+      "title": "東京・大阪・名古屋のオフィス賃料予測を公表",
+      "source": "REINET",
+      "url": "https://www.reinet.or.jp/visitors-report.html",
+      "published": ""
+    },
+    {
+      "title": "Gaw CapitalとPatience Capitalが東急プラザ銀座を10億ドル超で取得",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/markets/asia/hong-kongs-gaw-capital-buys-iconic-tokyo-mall-over-1-billion-2025-02-07/",
+      "published": ""
+    },
+    {
+      "title": "日銀利上げで政策金利は約30年ぶり高水準、円・不動産・資本フローに影響",
+      "source": "FT",
+      "url": "https://www.ft.com/content/cbaaff02-9c62-4f5f-8e02-d38798df4196",
+      "published": ""
+    },
+    {
+      "title": "日銀の利上げは日本の金利正常化を示す転換点に",
+      "source": "AP",
+      "url": "https://apnews.com/article/cd9ce451cc63b2d6c6932adc3b138684",
       "published": ""
     }
   ]
